@@ -33,7 +33,7 @@ if page == "Edit Data":
                                                     programs, duration, price, starting_date, ending_date) \
                           VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14);')
             session.execute(query, {'1': '', '2': '', '3': None, '4': 0, '5': '', '6': '', '7': '', '8': '', '9': '',
-                                    '10': '', '11': 0, '12': '', '13': None, '14': None})
+                                    '10': '', '11': '', '12': 0, '13': None, '14': None})
             session.commit()
 
     data = conn.query('SELECT * FROM PARTICIPANT ORDER By id;', ttl="0")
