@@ -7,7 +7,7 @@ st.markdown(css_link, unsafe_allow_html=True)
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
 list_duration = ['', '2 months', '3 months']
-list_job = ['', 'Student', 'Barista', 'College Student']
+list_job = ['', 'Student', 'Worker', 'College Student']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://rezkihanafadhila:rFTzUJkYG4j9@ep-royal-wind-80779842.us-east-2.aws.neon.tech/web")
@@ -16,7 +16,7 @@ with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS PARTICIPANT (id serial, full_name varchar, gender char(6), birth date, \
                                                        ages int, city varchar, job varchar, institution varchar, \
                                                        email varchar, handphone varchar, programs varchar, \
-                                                       price int, duration varchar, starting_date date, ending_date date);')
+                                                       duration varchar, price int, starting_date date, ending_date date);')
     session.execute(query)
 
 st.header('SIMPLE PARTICIPANT DATA MANAGEMENT SYS')
@@ -30,7 +30,7 @@ if page == "Edit Data":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO PARTICIPANT (full_name, gender, birth, ages, city, job, institution, email, handphone, \
-                                                    programs, price, duration, starting_date, ending_date) \
+                                                    programs, duration, price, starting_date, ending_date) \
                           VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14);')
             session.execute(query, {'1': '', '2': '', '3': None, '4': 0, '5': '', '6': '', '7': '', '8': '', '9': '',
                                     '10': '', '11': 0, '12': '', '13': None, '14': None})
@@ -49,8 +49,8 @@ if page == "Edit Data":
         email_lama = result["email"]
         handphone_lama = result["handphone"]
         programs_lama = result["programs"]
-        price_lama = result["price"]
         duration_lama = result["duration"]
+        price_lama = result["price"]
         starting_date_lama = result["starting_date"]
         ending_date_lama = result["ending_date"]
 
@@ -66,8 +66,8 @@ if page == "Edit Data":
                 email_baru = st.text_input("email", email_lama)
                 handphone_baru = st.text_input("handphone", handphone_lama)
                 programs_baru = st.selectbox("programs", list_programs, list_programs.index(programs_lama))
-                price_baru = st.number_input("price", value=price_lama)
                 duration_baru = st.selectbox("duration", list_duration, list_duration.index(duration_lama))
+                price_baru = st.number_input("price", value=price_lama)
                 starting_date_baru = st.date_input("starting_date", starting_date_lama)
                 ending_date_baru = st.date_input("ending_date", ending_date_lama)
 
@@ -78,13 +78,13 @@ if page == "Edit Data":
                         with conn.session as session:
                             query = text('UPDATE PARTICIPANT \
                                           SET full_name=:1, gender=:2, birth=:3, ages=:4, city=:5, job=:6, institution=:7, \
-                                          email=:8, handphone=:9, programs=:10, price=:11, duration=:12, \
+                                          email=:8, handphone=:9, programs=:10, duration=:11, price=:12 \
                                           starting_date=:13, ending_date=:14 \
                                           WHERE id=:15;')
                             session.execute(query, {'1': full_name_baru, '2': gender_baru, '3': birth_baru,
                                                     '4': ages_baru, '5': city_baru, '6': job_baru, '7': institution_baru,
                                                     '8': email_baru, '9': handphone_baru, '10': programs_baru,
-                                                    '11': price_baru, '12': duration_baru, '13': starting_date_baru,
+                                                    '11': duration_baru, '12': price_baru, '13': starting_date_baru,
                                                     '14': ending_date_baru, '15': id})
                             session.commit()
                             st.experimental_rerun()
