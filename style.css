@@ -1,80 +1,12 @@
-/* Styles for Sidebar */
-.sidebar .css-1glt0hu {
-    background-color: #e61c1c;
-    color: #ffffff;
+body {
+    background: linear-gradient(to right, #4B0082, #FF8C00); /* Ubah warna latar belakang sesuai preferensi Anda */
+    color: white; /* Ubah warna teks sesuai preferensi Anda */
+    font-family: Arial, sans-serif; /* Ganti jenis font sesuai preferensi Anda */
 }
 
-/* Styles for Main Content */
-.css-1l02zno {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
+/* Tambahkan gaya khusus untuk elemen-elemen tertentu jika diperlukan */
+h1 {
+    color: #FFD700; /* Warna emas untuk judul */
 }
 
-/* Styles for Header */
-.css-1be6ylr {
-    background-color: #1e88e5;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-/* Styles for Buttons */
-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #1565c0;
-}
-
-/* Styles for Forms and Inputs */
-form {
-    margin-top: 20px;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Styles for Expanders */
-.css-13oyeuy {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-/* Styles for Dataframes */
-.dataframe {
-    margin-top: 20px;
-}
-
-/* Styles for Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #e0e0e0;
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f0f0f0;
-}
-
-/* Additional Styles as Needed */
+/* ...Tambahkan gaya khusus lainnya sesuai kebutuhan */
