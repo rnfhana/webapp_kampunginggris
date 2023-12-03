@@ -1,12 +1,10 @@
 body {
-    background: linear-gradient(to right, #4B0082, #FF8C00); /* Ubah warna latar belakang sesuai preferensi Anda */
-    color: white; /* Ubah warna teks sesuai preferensi Anda */
-    font-family: Arial, sans-serif; /* Ganti jenis font sesuai preferensi Anda */
+    background: linear-gradient(to right, #4B0082, #FF8C00); 
+    color: white; 
+    font-family: Arial, sans-serif; 
 }
 
-/* Tambahkan gaya khusus untuk elemen-elemen tertentu jika diperlukan */
+
 h1 {
-    color: #FFD700; /* Warna emas untuk judul */
+    color: #FFD700; 
 }
-
-/* ...Tambahkan gaya khusus lainnya sesuai kebutuhan */
