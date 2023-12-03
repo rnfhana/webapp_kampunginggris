@@ -19,7 +19,7 @@ with conn.session as session:
                                                        duration varchar, price int, starting_date date, ending_date date);')
     session.execute(query)
 
-st.header('SIMPLE PARTICIPANT DATA MANAGEMENT SYS')
+st.header('DATABASE PARTICIPANT DATA MANAGEMENT KAMPUNG INGGRIS')
 page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data"])
 
 if page == "View Data":
