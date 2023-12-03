@@ -13,7 +13,7 @@ conn = st.connection("postgresql", type="sql",
                      url="postgresql://rezkihanafadhila:rFTzUJkYG4j9@ep-royal-wind-80779842.us-east-2.aws.neon.tech/web")
 
 with conn.session as session:
-    query = text('CREATE TABLE IF NOT EXISTS PARTICIPANT (id serial, full_name varchar, gender char(6), birth date, \
+    query = text('CREATE TABLE IF NOT EXISTS PARTICIPANT (id serial, full_name varchar, gender varchar, birth date, \
                                                        ages int, city varchar, job varchar, institution varchar, \
                                                        email varchar, handphone varchar, programs varchar, \
                                                        duration varchar, price int, starting_date date, ending_date date);')
@@ -57,16 +57,16 @@ if page == "Edit Data":
         with st.expander(f'a.n. {full_name_lama}'):
             with st.form(f'data-{id}'):
                 full_name_baru = st.text_input("full_name", full_name_lama)
-                gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
+                gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama) if gender_lama in list_gender else 0)
                 birth_baru = st.date_input("birth", birth_lama)
                 ages_baru = st.number_input("ages", value=ages_lama)
                 city_baru = st.text_input("city", city_lama)
-                job_baru = st.selectbox("job", list_job, list_job.index(job_lama))
+                job_baru = st.selectbox("job", list_job, list_job.index(job_lama) if job_lama in list_job else 0)
                 institution_baru = st.text_input("institution", institution_lama)
                 email_baru = st.text_input("email", email_lama)
                 handphone_baru = st.text_input("handphone", handphone_lama)
-                programs_baru = st.selectbox("programs", list_programs, list_programs.index(programs_lama))
-                duration_baru = st.selectbox("duration", list_duration, list_duration.index(duration_lama))
+                programs_baru = st.selectbox("programs", list_programs, list_programs.index(programs_lama) if programs_lama in list_programs else 0)
+                duration_baru = st.selectbox("duration", list_duration, list_duration.index(duration_lama) if duration_lama in list_duration else 0)
                 price_baru = st.number_input("price", value=price_lama)
                 starting_date_baru = st.date_input("starting_date", starting_date_lama)
                 ending_date_baru = st.date_input("ending_date", ending_date_lama)
@@ -78,7 +78,7 @@ if page == "Edit Data":
                         with conn.session as session:
                             query = text('UPDATE PARTICIPANT \
                                           SET full_name=:1, gender=:2, birth=:3, ages=:4, city=:5, job=:6, institution=:7, \
-                                          email=:8, handphone=:9, programs=:10, duration=:11, price=:12 \
+                                          email=:8, handphone=:9, programs=:10, duration=:11, price=:12, \
                                           starting_date=:13, ending_date=:14 \
                                           WHERE id=:15;')
                             session.execute(query, {'1': full_name_baru, '2': gender_baru, '3': birth_baru,
@@ -95,5 +95,3 @@ if page == "Edit Data":
                         session.execute(query, {'1': id})
                         session.commit()
                         st.experimental_rerun()
-
-
