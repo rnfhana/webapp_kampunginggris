@@ -2,6 +2,7 @@ import streamlit as st
 from sqlalchemy import text
 
 css_link = '<link rel="stylesheet" href="styles.css">'
+st.markdown(css_link, unsafe_allow_html=True)
 
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
