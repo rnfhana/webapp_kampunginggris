@@ -1,6 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 
+css_link = '<link rel="stylesheet" href="styles.css">'
 
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
@@ -94,10 +95,4 @@ if page == "Edit Data":
                         session.commit()
                         st.experimental_rerun()
 
-
-css = """
-/* Your CSS Styles Here */
-"""
-
-st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
