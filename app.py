@@ -1,7 +1,6 @@
 import streamlit as st
 from sqlalchemy import text
 
-
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
 list_duration = ['', '2 months', '3 months']
