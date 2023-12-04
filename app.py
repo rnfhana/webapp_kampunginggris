@@ -1,8 +1,8 @@
 import streamlit as st
 from sqlalchemy import text
+import pandas as pd
+import plotly.express as px
 
-css_link = '<link rel="stylesheet" href="style.css">'
-st.markdown(css_link, unsafe_allow_html=True)
 
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
@@ -20,11 +20,26 @@ with conn.session as session:
     session.execute(query)
 
 st.header('DATABASE PARTICIPANT DATA MANAGEMENT KAMPUNG INGGRIS')
-page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data"])
+page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data", "Visualisasi Data"])
+
 
 if page == "View Data":
     data = conn.query('SELECT * FROM PARTICIPANT ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
+
+if page == "Visualisasi Data":
+    data = conn.query('SELECT * FROM PARTICIPANT ORDER By id;', ttl="0").set_index('id')
+    st.dataframe(data)
+
+    # Visualization using bar chart
+    st.subheader("Bar Chart")
+    fig_bar = px.bar(data, x='programs', title='Program Distribution')
+    st.plotly_chart(fig_bar)
+
+    # Visualization using pie chart
+    st.subheader("Pie Chart")
+    fig_pie = px.pie(data, names='gender', title='Gender Distribution')
+    st.plotly_chart(fig_pie)
 
 if page == "Edit Data":
     if st.button('Tambah Data'):
