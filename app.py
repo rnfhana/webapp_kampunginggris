@@ -100,9 +100,9 @@ if page == "Visualisasi Data":
     data = conn.query('SELECT programs, COUNT(*) as count FROM participant GROUP BY programs;')
     st.bar_chart(data.set_index('programs'))
     '\n'
-    st.subheader("Pie Chart: Duration Distribution")
+    st.subheader("Visualisasi Duration")
     data = conn.query('SELECT duration, COUNT(*) as count FROM participant GROUP BY duration;')
-    st.pie_chart(data.set_index('duration'))
+    st.bar_chart(data.set_index('duration'))
     '\n'
     st.subheader("Visualisasi Price")
     data = conn.query('SELECT price, COUNT(*) as count FROM participant GROUP BY price;')
