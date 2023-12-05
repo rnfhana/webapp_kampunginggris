@@ -24,11 +24,6 @@ if page == "View Data":
     data = conn.query('SELECT * FROM PARTICIPANT ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 
-if page == "Visualisasi Data":
-    st.subheader("Visualisasi Programs")
-    data = conn.query('SELECT programs, COUNT(*) as count FROM participant GROUP BY programs;')
-    st.bar_chart(data.set_index('programs'))
-
 if page == "Edit Data":
     if st.button('Tambah Data'):
         with conn.session as session:
@@ -98,3 +93,9 @@ if page == "Edit Data":
                         session.execute(query, {'1': id})
                         session.commit()
                         st.experimental_rerun()
+
+
+if page == "Visualisasi Data":
+    st.subheader("Visualisasi Programs")
+    data = conn.query('SELECT programs, COUNT(*) as count FROM participant GROUP BY programs;')
+    st.bar_chart(data.set_index('programs'))
