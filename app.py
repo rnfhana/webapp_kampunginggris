@@ -99,7 +99,7 @@ if page == "Edit Data":
 if page == "Visualisasi Data":
     st.subheader("Visualisasi Programs")
     data = conn.query('SELECT programs, COUNT(*) as count FROM participant GROUP BY programs;')
-    st.plotly_chart(px.pie(data, values = 'count', names = 'programs'))
+    st.bar_chart(data.set_index('programs'))
     '\n'
     st.subheader("Visualisasi Price")
     data = conn.query('SELECT price, COUNT(*) as count FROM participant GROUP BY price;')
