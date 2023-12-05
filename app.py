@@ -102,4 +102,4 @@ if page == "Visualisasi Data":
     '\n'
     st.subheader("Visualisasi Duration")
     data = conn.query('SELECT duration, COUNT(*) as count FROM participant GROUP BY duration;')
-    st.bar_chart(data.set_index('duration'))
+    st.pie_chart(data.set_index('duration'))
