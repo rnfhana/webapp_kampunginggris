@@ -1,5 +1,4 @@
 import streamlit as st
-import plotly.express as px
 import pandas as pd
 from sqlalchemy import text
 
@@ -101,9 +100,9 @@ if page == "Visualisasi Data":
     data = conn.query('SELECT programs, COUNT(*) as count FROM participant GROUP BY programs;')
     st.bar_chart(data.set_index('programs'))
     '\n'
-    st.subheader("Pie Chart: Duration Distribution")
-    data_pie_duration = conn.query('SELECT duration, COUNT(*) as count FROM participant GROUP BY duration;')
-    st.plotly_chart(px.pie(data_pie_duration, values = 'count', names = 'duration'))
+    st.subheader("Visualisasi Price")
+    data = conn.query('SELECT duration, COUNT(*) as count FROM participant GROUP BY duration;')
+    st.bar_chart(data.set_index('duration'))
     '\n'
     st.subheader("Visualisasi Price")
     data = conn.query('SELECT price, COUNT(*) as count FROM participant GROUP BY price;')
