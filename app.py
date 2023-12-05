@@ -26,7 +26,7 @@ if page == "View Data":
 
 if page == "Visualisasi Data":
     st.subheader("Visualisasi Programs")
-    data = conn.query('SELECT programs, COUNT(*) as count FROM st.dataframe(data) GROUP BY programs;')
+    data = conn.query('SELECT programs, COUNT(*) as count FROM programs GROUP BY programs;')
     st.bar_chart(data.set_index('programs'))
 
 if page == "Edit Data":
