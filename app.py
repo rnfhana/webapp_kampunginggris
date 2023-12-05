@@ -1,7 +1,7 @@
 import streamlit as st
-import plotly.express as px
 import pandas as pd
 from sqlalchemy import text
+import plotly.express as px
 
 list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 'Business English', 'Conversational English']
 list_gender = ['', 'male', 'female']
