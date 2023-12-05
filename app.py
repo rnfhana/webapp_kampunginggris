@@ -18,7 +18,7 @@ with conn.session as session:
     session.execute(query)
 
 st.header('DATABASE PARTICIPANT DATA MANAGEMENT KAMPUNG INGGRIS')
-page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data"])
+page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data", "Visualisasi Data"])
 
 if page == "View Data":
     data = conn.query('SELECT * FROM PARTICIPANT ORDER By id;', ttl="0").set_index('id')
