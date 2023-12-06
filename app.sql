@@ -12,7 +12,7 @@ create table participant (
 	handphone text,
 	programs text,
 	duration text,
-	price int,
+	price text,
 	starting_date date,
 	ending_date date
 );
