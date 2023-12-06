@@ -6,6 +6,7 @@ list_programs = ['', 'General English', 'Intensive IELTS', 'TOEFL Preparation', 
 list_gender = ['', 'male', 'female']
 list_duration = ['', '2 months', '3 months']
 list_job = ['', 'Student', 'Worker', 'College Student']
+list_price = ['', 'Rp 2.000.000', 'Rp 2.500.000', 'Rp 3.000.000', 'Rp 3.500.000']
 
 conn = st.connection("postgresql", type="sql", 
                      url="postgresql://rezkihanafadhila:rFTzUJkYG4j9@ep-royal-wind-80779842.us-east-2.aws.neon.tech/web")
@@ -65,7 +66,7 @@ if page == "Edit Data":
                 handphone_baru = st.text_input("handphone", handphone_lama)
                 programs_baru = st.selectbox("programs", list_programs, list_programs.index(programs_lama) if programs_lama in list_programs else 0)
                 duration_baru = st.selectbox("duration", list_duration, list_duration.index(duration_lama) if duration_lama in list_duration else 0)
-                price_baru = st.number_input("price", value=price_lama)
+                price_baru = st.selectbox("price", list_price, list_price.index(price_lama) if price_lama in list_price else 0)
                 starting_date_baru = st.date_input("starting_date", starting_date_lama)
                 ending_date_baru = st.date_input("ending_date", ending_date_lama)
 
