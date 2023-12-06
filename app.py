@@ -108,10 +108,3 @@ if page == "Visualisasi Data":
     st.subheader("Visualisasi Price")
     data = conn.query('SELECT price, COUNT(*) as count FROM participant GROUP BY price;')
     st.bar_chart(data.set_index('price'))
-
-[theme]
-primaryColor="#F63366"
-backgroundColor="#FFFFFF"
-secondaryBackgroundColor="#F0F2F6"
-textColor="#262730"
-font="sans serif"
