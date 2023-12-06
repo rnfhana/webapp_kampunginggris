@@ -15,7 +15,7 @@ with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS PARTICIPANT (id serial, full_name varchar, gender varchar, birth date, \
                                                        ages int, city varchar, job varchar, institution varchar, \
                                                        email varchar, handphone varchar, programs varchar, \
-                                                       duration varchar, price int, starting_date date, ending_date date);')
+                                                       duration varchar, price varchar, starting_date date, ending_date date);')
     session.execute(query)
 
 st.header('DATABASE PARTICIPANT OF KAMPUNG INGGRIS TAHUN 2023')
